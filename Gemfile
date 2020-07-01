@@ -37,3 +37,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+
+gem "fast_jsonapi", "~> 1.5"
+
+gem "pagy", "~> 3.8"
