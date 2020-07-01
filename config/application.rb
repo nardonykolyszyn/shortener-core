@@ -8,6 +8,7 @@ require 'rails'
 require 'active_model/railtie'
 require 'active_record/railtie'
 require 'action_controller/railtie'
+require 'active_job/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
