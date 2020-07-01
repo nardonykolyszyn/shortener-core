@@ -45,7 +45,7 @@ module Api
 
       # GET /api/v1/shortened_urls/:unique_key
       def show
-        resource = ShortenedUrl.find_by(unique_key: params[:id])
+        resource = ShortenedUrl.find_by(unique_key: params[:unique_key])
 
         redirect_to resource.shortened_url, status: :moved_permanently
       end
