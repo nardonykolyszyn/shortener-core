@@ -9,7 +9,7 @@ class ShortenedUrl < ApplicationRecord
 
   def set_url_title
     self.title = begin
-                   URI.open(ShortenerApi.clean_url(url)) do |res|
+                   URI.open(Shortener.clean_url(url)) do |res|
                      Nokogiri::HTML(res).at_css('title').text
                    end
                  rescue OpenURI::HTTPError => e
@@ -17,11 +17,15 @@ class ShortenedUrl < ApplicationRecord
                  end
   end
 
+  def shortened_url
+    URI::HTTP.build(host: url, path: "/#{unique_key}").to_s
+  end
+
   def generate_unique_key
     self.unique_key = loop do
-      random_token = ShortenerApi.generate_option_key
+      random_token = Shortener.generate_option_key
       break random_token unless self.class.exists?(unique_key: random_token)
     end
+    yield
   end
 end
-

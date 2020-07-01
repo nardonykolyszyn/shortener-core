@@ -2,7 +2,7 @@
 
 require 'open-uri'
 
-module ShortenerApi
+module Shortener
   # Constants
   CHARSET = {
     alpha_num: ('a'..'z').to_a + (0..9).to_a,
@@ -27,6 +27,10 @@ module ShortenerApi
 
   def self.generate_option_key
     (0..unique_key_length).map { key_chars[rand(key_chars.size)] }.join
+  end
+
+  def self.extract_unique_key(url)
+    url.split('/').last
   end
 
   def self.clean_url(url)
