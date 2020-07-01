@@ -43,3 +43,7 @@ group :development do
   gem 'capistrano3-puma'
 end
 
+
+gem "fast_jsonapi", "~> 1.5"
+
+gem "pagy", "~> 3.8"
