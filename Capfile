@@ -4,6 +4,7 @@
 require 'capistrano/setup'
 require 'capistrano/deploy'
 require 'capistrano/scm/git'
+require 'sshkit/sudo'
 # Custom Capistrano plugins
 require 'capistrano/rbenv'
 require 'capistrano/bundler'

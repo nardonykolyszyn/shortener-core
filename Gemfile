@@ -36,6 +36,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Deployment dependencies
+  gem "sshkit-sudo", "~> 0.1.0"
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
