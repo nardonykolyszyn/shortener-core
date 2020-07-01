@@ -47,7 +47,7 @@ module Api
       def show
         resource = ShortenedUrl.find_by(unique_key: params[:unique_key])
 
-        redirect_to resource.shortened_url, status: :moved_permanently
+        redirect_to resource.url, status: :moved_permanently
       end
 
       # DELETE /api/v1/shortened_urls/:unique_key
