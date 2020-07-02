@@ -18,7 +18,7 @@ class ShortenedUrl < ApplicationRecord
   end
 
   def shortened_url
-    URI::HTTP.build(host: ENV['APP_HOST'], path: "/#{unique_key}").to_s
+    URI::HTTPS.build(host: ENV['APP_HOST'], path: "/#{unique_key}").to_s
   end
 
   def generate_unique_key
