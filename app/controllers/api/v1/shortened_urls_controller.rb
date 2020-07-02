@@ -2,17 +2,7 @@
 
 module Api
   module V1
-    # ActionController::Metal provides a minimalist ActionController interface.
     class ShortenedUrlsController < ApiController
-      # include ActionController::StrongParameters
-      # include ActionController::Redirecting
-      # include ActionController::Instrumentation
-      # include AbstractController::Rendering
-      # include ActionView::Rendering
-      # include ActionController::Rendering
-      # include Rendering
-      # include Rederers:All
-      # include ActionController::Renderers
       # GET /api/v1/shortened_urls
       def index
         pagy, shortened_urls = pagy(

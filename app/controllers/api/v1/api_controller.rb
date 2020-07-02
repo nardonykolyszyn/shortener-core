@@ -2,8 +2,13 @@
 
 module Api
   module V1
-    class ApiController < ActionController::Base
-      skip_before_action :verify_authenticity_token
+    # ActionController::Metal provides a minimalist ActionController interface.
+    class ApiController < ActionController::Metal
+      include ActionController::StrongParameters
+      include AbstractController::Rendering
+      include ActionController::Instrumentation
+      include ActionController::Rendering
+      include ActionController::Renderers::All
       include Pagy::Backend
     end
   end
