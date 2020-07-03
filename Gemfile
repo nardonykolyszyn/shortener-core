@@ -49,3 +49,5 @@ gem 'pagy', '~> 3.8'
 
 gem "rack-cors", "~> 1.1"
 gem 'rollbar', '~> 2.26'
+
+gem "figaro", "~> 1.2"
