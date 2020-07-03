@@ -18,6 +18,7 @@ module Api
           tota_pages: pagy.pages
         }, status: 200
       end
+
       # POST /api/v1/shortened_urls
       def create
         shortened_url = ShortenedUrl.new(url: shortened_urls[:url])
@@ -35,27 +36,39 @@ module Api
 
       # GET /api/v1/shortened_urls/:unique_key
       def show
-        resource = ShortenedUrl.find_by(unique_key: params[:unique_key])
+        shortened_url.increment_usage_count
 
-        if resource
-          resource.increment_usage_count
-
-          redirect_to resource.url, status: :moved_permanently
-        else
-          render json: {
-            errors: 'URL does not exist, check your payload.'
-          }
-        end
+        redirect_to shortened_url.url, status: :moved_permanently
       end
 
       # DELETE /api/v1/shortened_urls/:unique_key
       def destroy
+        shortened_url.destroy
+
+        render json: {
+          data: {
+            message: 'URL wad destroyed successfully'
+          }
+        }, status: :ok
       end
 
       private
 
       def shortened_urls
         params.require(:shortened_url).permit(:url, :unique_key)
+      end
+
+      # Nature Rails way to load resouces from Rails 3
+      # This method uses Lazy Loading definition
+      def shortened_url
+        @shortened_url ||= ShortenedUrl.find(params[:unique_key])
+      end
+
+      # Ruby Polymorphism: Great example.
+      def not_found
+        render json: {
+          errors: 'URL not found, check your payload'
+        }
       end
     end
   end
