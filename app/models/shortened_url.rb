@@ -37,8 +37,9 @@ class ShortenedUrl < ApplicationRecord
                    URI.open(url) do |res|
                      Nokogiri::HTML(res).at_css('title').text
                    end
-                 rescue OpenURI::HTTPError => e
-                   e.message
+                 rescue OpenURI::HTTPError, SocketError => e
+                   Rollbar.error('Host connection', e.message)
+                   'Unavailable host'
                  end
   end
 end
