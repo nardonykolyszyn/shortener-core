@@ -49,6 +49,8 @@ This API is was deployed by Capistrano + Nginx + Puma
 
 ### Running tests
 $ bundle exec rspec .
+
+
 **Good to have**:
 - API controllers tests recorded with VCR + Fixtures
 - Integration Tests (TDD)
