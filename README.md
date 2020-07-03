@@ -61,7 +61,7 @@ $ bundle exec rspec .
 This API use Moved **Permanently redirect (301)** approach.
 
 ```bash
-$ curl -I https://shortener.devpolish.com/cg2s33
+$ curl -I https://api.devpolish.com/cg2s33
 ```
 
 ```json
@@ -81,7 +81,7 @@ X-Runtime: 0.002773
 
 ### API Documentation
 
-**Test URL**: *shortener.devpolish.com*
+**Test URL**: *api.devpolish.com*
 
 ##### Create a new shortened URL
 `POST /api/v1/shortened_urls`
@@ -108,7 +108,7 @@ X-Runtime: 0.002773
                 "url": "http://google.com/",
                 "title": "Google",
                 "unique_key": "lg5iso",
-                "shortened_url": "https://toryshortener.devpolish.com/lg5iso"
+                "shortened_url": "https://api.devpolish.com/lg5iso"
             }
         }
     }

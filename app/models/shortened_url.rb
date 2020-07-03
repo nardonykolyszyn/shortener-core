@@ -5,6 +5,7 @@ class ShortenedUrl < ApplicationRecord
   self.primary_key = :unique_key
   # Callbacks
   after_initialize :sanitize_url
+  after_validation :set_url_title
   around_create    :generate_title_and_unique_key
   # Validations
   validates :url, presence: true
@@ -31,7 +32,6 @@ class ShortenedUrl < ApplicationRecord
       break random_token unless self.class.exists?(unique_key: random_token)
     end
     yield
-    set_url_title
   end
 
   def set_url_title
