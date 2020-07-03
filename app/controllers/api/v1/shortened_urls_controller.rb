@@ -6,7 +6,8 @@ module Api
       # GET /api/v1/shortened_urls
       def index
         pagy, shortened_urls = pagy(
-          ShortenedUrl.all,
+          ShortenedUrl.all.order(counter: :desc)
+                          .limit(100),
           per_page: params[:page],
           items: 10
         )
