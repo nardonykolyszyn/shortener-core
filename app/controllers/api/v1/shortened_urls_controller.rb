@@ -6,13 +6,14 @@ module Api
       # GET /api/v1/shortened_urls
       def index
         pagy, shortened_urls = pagy(
-          ShortenedUrl.all,
+          ShortenedUrl.all.order(counter: :desc)
+                          .limit(100),
           per_page: params[:page],
-          items: 10
+          items: 50
         )
 
         render json: {
-          data: ShortenedUrlSerializer.new(shortened_urls),
+          result: ShortenedUrlSerializer.new(shortened_urls),
           current_page: pagy.page,
           total_items: pagy.items,
           tota_pages: pagy.pages
@@ -23,9 +24,10 @@ module Api
       def create
         shortened_url = ShortenedUrl.new(url: shortened_urls[:url])
 
-        if shortened_url.save
+        if shortened_url.valid?
+          shortened_url.save
           render json: {
-            data: ShortenedUrlSerializer.new(shortened_url)
+            result: ShortenedUrlSerializer.new(shortened_url)
           }, status: :ok
         else
           render json: {
@@ -46,7 +48,7 @@ module Api
         shortened_url.destroy
 
         render json: {
-          data: {
+          result: {
             message: 'URL wad destroyed successfully'
           }
         }, status: :ok
@@ -68,7 +70,7 @@ module Api
       def not_found
         render json: {
           errors: 'URL not found, check your payload'
-        }
+        }, status: :not_found
       end
     end
   end
