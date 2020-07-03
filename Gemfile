@@ -18,6 +18,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner', '~> 1.8'
+  gem 'factory_bot_rails', '~> 6.0'
+  gem 'faker', '~> 2.13', require: false
   gem 'rspec-collection_matchers', '~> 1.2'
   gem 'rspec-its', '~> 1.3'
   gem 'rspec-json_expectations', '~> 2.2'
@@ -45,4 +47,4 @@ gem 'fast_jsonapi', '~> 1.5'
 
 gem 'pagy', '~> 3.8'
 
-gem "rollbar", "~> 2.26"
+gem 'rollbar', '~> 2.26'

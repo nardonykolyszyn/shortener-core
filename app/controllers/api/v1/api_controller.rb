@@ -8,8 +8,8 @@ module Api
       include AbstractController::Rendering
       include ActionController::Rescue
       include ActionController::Instrumentation
-      include ActionController::Rendering
       include ActionController::Renderers::All
+      include ActionController::Redirecting
       include Pagy::Backend
       rescue_from ActiveRecord::RecordNotFound, with: :not_found
     end

@@ -36,7 +36,7 @@ module Api
 
       # GET /api/v1/shortened_urls/:unique_key
       def show
-        shortened_url.increment_usage_count
+        shortened_url.increment_usage_counter
 
         redirect_to shortened_url.url, status: :moved_permanently
       end

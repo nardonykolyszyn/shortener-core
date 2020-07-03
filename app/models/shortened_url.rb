@@ -15,7 +15,9 @@ class ShortenedUrl < ApplicationRecord
   end
 
   def shortened_url
-    URI::HTTPS.build(host: ENV['APP_HOST'], path: "/#{unique_key}").to_s
+    resource_builder = Rails.env == 'development' ? URI::HTTP : URI::HTTPS
+
+    resource_builder.build(host: ENV['APP_HOST'], path: "/#{unique_key}", port: ENV['APP_PORT']).to_s
   end
 
   def increment_usage_counter
@@ -34,10 +36,10 @@ class ShortenedUrl < ApplicationRecord
 
   def set_url_title
     self.title = begin
-                   URI.open(url) do |res|
+                   URI.open(url, open_timeout: 3) do |res|
                      Nokogiri::HTML(res).at_css('title').text
                    end
-                 rescue OpenURI::HTTPError, SocketError => e
+                 rescue OpenURI::HTTPError, SocketError, Net::OpenTimeout => e
                    Rollbar.error('Host connection', e.message)
                    'Unavailable host'
                  end
