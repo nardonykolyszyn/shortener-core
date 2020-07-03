@@ -81,7 +81,7 @@ X-Runtime: 0.002773
 
 ### API Documentation
 
-Test URL: shortener.devpolish.com
+**Test URL**: *shortener.devpolish.com*
 
 ##### Create a new shortened URL
 `POST /api/v1/shortened_urls`
