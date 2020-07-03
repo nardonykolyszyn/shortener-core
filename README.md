@@ -79,7 +79,7 @@ X-Request-Id: 61f748b4-973f-4ef2-b736-f9f31c83d358
 X-Runtime: 0.002773
 ```
 
-### Documentation
+### API Documentation
 ##### Create a new shortened URL
 `POST /api/v1/shortened_urls`
 
