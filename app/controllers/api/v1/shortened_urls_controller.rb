@@ -9,7 +9,7 @@ module Api
           ShortenedUrl.all.order(counter: :desc)
                           .limit(100),
           per_page: params[:page],
-          items: 10
+          items: 50
         )
 
         render json: {
