@@ -10,6 +10,7 @@ describe ShortenedUrl do
   let(:invalid_url)        { FactoryBot.build(:shortened_url, :with_invalid_url) }
   let(:url_with_no_scheme) { FactoryBot.build(:shortened_url, :with_no_scheme) }
   let(:unavailable_url)    { FactoryBot.build(:shortened_url, :with_unavailable_url) }
+  let(:url_with_no_url)    { FactoryBot.build(:shortened_url, :with_empty_url) }
 
   before do
     VCR.use_cassette('shortened_url#create') do
@@ -21,6 +22,10 @@ describe ShortenedUrl do
     context 'validations' do
       it 'should pass all validations' do
         expect(valid_url).to be_valid
+      end
+
+      it 'should raise an error' do
+        expect(url_with_no_url.valid?).to be false
       end
     end
 

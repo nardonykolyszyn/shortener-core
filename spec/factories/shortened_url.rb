@@ -17,5 +17,9 @@ FactoryBot.define do
     trait :with_unavailable_url do
       url { Faker::Internet.url(host: 'website.bit', scheme: 'http') }
     end
+
+    trait :with_empty_url do
+      url { nil }
+    end
   end
 end

@@ -11,7 +11,7 @@ class ShortenedUrl < ApplicationRecord
 
   def sanitize_url
     # In case procotol is not specified, it appends HTTP by default.
-    self.url = Shortener.clean_url(url)
+    self.url = Shortener.clean_url(url) if url
   end
 
   def shortened_url
