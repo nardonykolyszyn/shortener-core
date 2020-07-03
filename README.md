@@ -49,6 +49,8 @@ This API is was deployed by Capistrano + Nginx + Puma
 
 ### Running tests
 $ bundle exec rspec .
+
+
 **Good to have**:
 - API controllers tests recorded with VCR + Fixtures
 - Integration Tests (TDD)
@@ -77,7 +79,10 @@ X-Request-Id: 61f748b4-973f-4ef2-b736-f9f31c83d358
 X-Runtime: 0.002773
 ```
 
-### Documentation
+### API Documentation
+
+**Test URL**: *shortener.devpolish.com*
+
 ##### Create a new shortened URL
 `POST /api/v1/shortened_urls`
 
@@ -157,7 +162,7 @@ X-Runtime: 0.002773
 
 ```json
 {
-    "errors": "URL not found, check your payload"
+  "errors": "URL not found, check your payload"
 }
 ```
 
@@ -355,7 +360,7 @@ X-Runtime: 0.002773
 ```json
 "result": {
 	"data": {
-	 	"message": 'URL wad destroyed successfully'
+	 	"message": "URL wad destroyed successfully"
 	}
 }
 ```
