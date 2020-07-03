@@ -357,7 +357,7 @@ X-Runtime: 0.002773
 ```json
 "result": {
 	"data": {
-	 	"message": 'URL wad destroyed successfully'
+	 	"message": "URL wad destroyed successfully"
 	}
 }
 ```
