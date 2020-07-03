@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ShortenedUrl < ApplicationRecord
+  # Set default primary key
+  self.primary_key = :unique_key
   # Callbacks
   after_initialize :sanitize_url
   around_create    :generate_title_and_unique_key
