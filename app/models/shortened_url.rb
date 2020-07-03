@@ -16,6 +16,10 @@ class ShortenedUrl < ApplicationRecord
     URI::HTTPS.build(host: ENV['APP_HOST'], path: "/#{unique_key}").to_s
   end
 
+  def increment_usage_counter
+    self.class.increment_counter(:counter, id)
+  end
+
   def generate_title_and_unique_key
     # NOTE: This can be handled by a retries counter to avoid infite loops.
     self.unique_key = loop do

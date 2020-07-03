@@ -37,7 +37,15 @@ module Api
       def show
         resource = ShortenedUrl.find_by(unique_key: params[:unique_key])
 
-        redirect_to resource.url, status: :moved_permanently
+        if resource
+          resource.increment_usage_count
+
+          redirect_to resource.url, status: :moved_permanently
+        else
+          render json: {
+            errors: 'URL does not exist, check your payload.'
+          }
+        end
       end
 
       # DELETE /api/v1/shortened_urls/:unique_key
