@@ -47,4 +47,5 @@ gem 'fast_jsonapi', '~> 1.5'
 
 gem 'pagy', '~> 3.8'
 
+gem "rack-cors", "~> 1.1"
 gem 'rollbar', '~> 2.26'
